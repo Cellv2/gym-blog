@@ -1,15 +1,21 @@
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
 import {
     container,
     heading,
-    navLinks,
     navLinkItem,
+    navLinks,
     navLinkText,
     siteTitle,
 } from "./layout.module.scss";
 
-const Layout = ({ pageTitle, children }: {pageTitle: string, children: any }) => {
+const Layout = ({
+    pageTitle,
+    children,
+}: {
+    pageTitle: string;
+    children: React.ReactNode;
+}) => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -18,7 +24,7 @@ const Layout = ({ pageTitle, children }: {pageTitle: string, children: any }) =>
                 }
             }
         }
-    `)
+    `);
 
     return (
         <div className={container}>
