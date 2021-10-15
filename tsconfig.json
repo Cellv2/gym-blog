@@ -80,6 +80,9 @@
 
         /* Advanced Options */
         "skipLibCheck": true,                           /* Skip type checking of declaration files. */
-        "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
+        "forceConsistentCasingInFileNames": true,        /* Disallow inconsistently-cased references to the same file. */
+
+        /* Plugins - Please make sure to use workspace typescript version! */
+        "plugins": [{ "name": "typescript-plugin-css-modules" }] /* https://github.com/mrmckeb/typescript-plugin-css-modules#installation */
     }
 }
