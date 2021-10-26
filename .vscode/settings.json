@@ -1,3 +1,4 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "typescript.tsdk": "node_modules\\typescript\\lib", // https://github.com/mrmckeb/typescript-plugin-css-modules#installation
+    "scss.validate": false // https://www.meidev.co/blog/visual-studio-code-css-linting-with-tailwind/
 }

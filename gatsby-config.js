@@ -4,7 +4,15 @@ module.exports = {
     },
     plugins: [
         "gatsby-plugin-image",
-        "gatsby-plugin-sass",
+        {
+            resolve: `gatsby-plugin-sass`,
+            options: {
+                postCssPlugins: [
+                    require("tailwindcss"),
+                    require("./tailwind.config.js"),
+                ],
+            },
+        },
         "gatsby-plugin-sharp",
     ],
 };
