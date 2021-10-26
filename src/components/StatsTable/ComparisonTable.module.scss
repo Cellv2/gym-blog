@@ -1,3 +1,15 @@
 .comparisonTable {
     @apply flex-1;
 }
+
+.fatter {
+    color: red;
+}
+
+.notFatter {
+    color: green;
+}
+
+.identical {
+    color: black;
+}

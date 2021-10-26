@@ -1,6 +1,11 @@
 import React from "react";
 import { DailyStats } from "../../../types/comparisons.types";
-import { comparisonTable } from "./ComparisonTable.module.scss";
+import {
+    comparisonTable,
+    fatter,
+    identical,
+    notFatter,
+} from "./ComparisonTable.module.scss";
 
 type Props = {
     dayOne: DailyStats;
@@ -24,11 +29,24 @@ const calculateDifferences = (
     return diff;
 };
 
+const calculateTextColour = (value: DailyStats[keyof DailyStats]) => {
+    // as we subtract yesterday from today's value, the number will be negative if yesterday was larger than today
+    // if today was lower, then we show this as green. If it's the same, it's black. If it's greater, it's red
+    if (value === 0) {
+        return identical;
+    } else if (value > 0) {
+        return fatter;
+    } else {
+        return notFatter;
+    }
+};
+
 const ComparisonTable = (props: Props) => {
     const { dayOne, dayTwo } = props;
     const diff = calculateDifferences(dayOne, dayTwo);
     const listItems = Object.keys(diff).map((key) => {
-        return <li>{diff[key as keyof DailyStats]}</li>;
+        const textClass = calculateTextColour(diff[key as keyof DailyStats]);
+        return <li className={textClass}>{diff[key as keyof DailyStats]}</li>;
     });
 
     return (

@@ -10,7 +10,7 @@ const testDataDayOne: DailyStats = {
     calories: 50,
     carbs: 25,
     fat: 10,
-    protein: 20,
+    protein: 50,
     sugar: 1,
     weight: 79,
 };
@@ -18,9 +18,9 @@ const testDataDayTwo: DailyStats = {
     calories: 100,
     carbs: 50,
     fat: 25,
-    protein: 50,
+    protein: 20,
     sugar: 2,
-    weight: 80,
+    weight: 79,
 };
 
 const StatsTable = (props: StatsTableProps) => {
