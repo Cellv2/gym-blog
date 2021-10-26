@@ -1,15 +1,36 @@
-import React from 'react'
+import React from "react";
+import { DailyStats } from "../../../types/comparisons.types";
+import ComparisonTable from "./ComparisonTable";
+import DayStatsTable from "./DayStatsTable";
+import { statsTable } from "./StatsTable.module.scss";
 
-type StatsTableProps = {
+type StatsTableProps = {};
 
-}
+const testDataDayOne: DailyStats = {
+    calories: 50,
+    carbs: 25,
+    fat: 10,
+    protein: 20,
+    sugar: 1,
+    weight: 79,
+};
+const testDataDayTwo: DailyStats = {
+    calories: 100,
+    carbs: 50,
+    fat: 25,
+    protein: 50,
+    sugar: 2,
+    weight: 80,
+};
 
 const StatsTable = (props: StatsTableProps) => {
     return (
-        <div>
-            This is the stats table
+        <div className={statsTable}>
+            <DayStatsTable dayStats={testDataDayOne} />
+            <ComparisonTable dayOne={testDataDayOne} dayTwo={testDataDayTwo} />
+            <DayStatsTable dayStats={testDataDayTwo} />
         </div>
-    )
-}
+    );
+};
 
-export default StatsTable
+export default StatsTable;
