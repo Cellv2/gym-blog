@@ -85,7 +85,7 @@ const StatsTable = (props: StatsTableProps) => {
                                         const diffData = diff[heading];
 
                                         // as we subtract yesterday from today's value, the number will be negative if yesterday was larger than today
-                                        // if today was lower, then we show this as green. If it's the same, it's black. If it's greater, it's red
+                                        // if today was lower, then we show this as green. If it's the same, it's transparent. If it's greater, it's red
                                         const weightElementClasses =
                                             diffData === 0
                                                 ? `${tdWrapper}`
