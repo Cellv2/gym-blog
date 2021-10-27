@@ -1,3 +1,35 @@
 .statsTable {
-    @apply flex;
+    @apply flex flex-col;
+}
+
+.margin {
+    @apply -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8;
+}
+
+.padding {
+    @apply py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8;
+}
+
+.border {
+    @apply shadow overflow-hidden border-b border-gray-200 sm:rounded-lg;
+}
+
+.tableHeader {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.tableBody {
+    @apply bg-white divide-y divide-gray-200;
+}
+
+.tdWrapper {
+    @apply px-6 py-4 whitespace-nowrap text-gray-500;
+
+    &.green {
+        @apply bg-green-300;
+    }
+
+    &.red {
+        @apply bg-red-300;
+    }
 }

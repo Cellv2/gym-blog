@@ -6,3 +6,12 @@ export type DailyStats = {
     protein: number;
     sugar: number;
 }
+
+export const statHeadings = [
+    "calories",
+    "carbs",
+    "fat",
+    "protein",
+    "sugar",
+    "weight",
+] as const;
