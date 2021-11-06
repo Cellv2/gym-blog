@@ -1,0 +1,22 @@
+.headerTitle {
+    font-size: 3rem;
+    color: gray;
+    font-weight: 700;
+    margin: 3rem 0;
+}
+
+.darkSwitcher {
+    color: #fff;
+    margin-top: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .darkSwitcher {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }
+}
