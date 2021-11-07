@@ -9,7 +9,8 @@ type Props = {
 const DayStatsTable = (props: Props) => {
     const { dayStats } = props;
     const listItems = Object.keys(dayStats).map((key) => {
-        return <li>{dayStats[key as keyof DailyStats]}</li>;
+        // TODO: fix the key below!!!!!
+        return <li key={Math.random()}>{dayStats[key as keyof DailyStats]}</li>;
     });
 
     return (

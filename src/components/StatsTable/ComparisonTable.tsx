@@ -46,7 +46,8 @@ const ComparisonTable = (props: Props) => {
     const diff = calculateDifferences(dayOne, dayTwo);
     const listItems = Object.keys(diff).map((key) => {
         const textClass = calculateTextColour(diff[key as keyof DailyStats]);
-        return <li className={textClass}>{diff[key as keyof DailyStats]}</li>;
+        // TODO: fix the key below!!!!!
+        return <li key={Math.random()} className={textClass}>{diff[key as keyof DailyStats]}</li>;
     });
 
     return (

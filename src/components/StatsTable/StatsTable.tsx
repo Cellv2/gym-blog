@@ -93,8 +93,9 @@ const StatsTable = (props: StatsTableProps) => {
                                                 ? `${tdWrapper} ${green}`
                                                 : `${tdWrapper} ${red}`;
 
+                                        // TODO: fix the key below!!!!!
                                         return (
-                                            <tr key={testDataDayOne.calories}>
+                                            <tr key={Math.random()}>
                                                 <th>{heading}</th>
                                                 <td className={tdWrapper}>
                                                     {dayOneRowData}
