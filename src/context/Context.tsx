@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MAX_DATE, MIN_DATE } from "../constants/calendar.constants";
 const defaultState = {
     dark: false,
@@ -12,47 +12,45 @@ const Context = React.createContext(defaultState);
 const supportsDarkMode = () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches === true;
 
-class Provider extends React.Component {
-    state = {
-        dark: false,
-        dayOne: MIN_DATE,
-        dayTwo: MAX_DATE,
-    };
+type Props = {
+    children: React.ReactNode;
+};
 
-    toggleDark = () => {
-        let dark = !this.state.dark;
-        localStorage.setItem("dark", JSON.stringify(dark));
-        this.setState({ dark });
-    };
+const Provider = ({ children }: Props) => {
+    const [dark, setDark] = useState(defaultState.dark);
+    const [dayOne, setDayOne] = useState(MIN_DATE);
+    const [dayTwo, setDayTwo] = useState(MAX_DATE);
 
-    componentDidMount() {
-        // Getting dark mode value from localStorage!
+    useEffect(() => {
+        // FIXME: correct the typings for this
         //@ts-expect-error
-        const lsDark = JSON.parse(localStorage.getItem("dark"));
+        const lsDark: boolean = JSON.parse(localStorage.getItem("dark"));
         if (lsDark) {
-            this.setState({ dark: lsDark });
+            setDark(lsDark);
         } else if (supportsDarkMode()) {
-            this.setState({ dark: true });
+            setDark(true);
         }
-    }
+    }, []);
 
-    render() {
-        const { children } = this.props;
-        const { dark } = this.state;
-        return (
-            <Context.Provider
-                value={{
-                    dark,
-                    toggleDark: this.toggleDark,
-                    dayOne: new Date(),
-                    dayTwo: new Date(),
-                }}
-            >
-                {children}
-            </Context.Provider>
-        );
-    }
-}
+    const toggleDark = () => {
+        const _dark = !dark;
+        localStorage.setItem("dark", JSON.stringify(_dark));
+        setDark(_dark);
+    };
+
+    return (
+        <Context.Provider
+            value={{
+                dark,
+                toggleDark,
+                dayOne: new Date(),
+                dayTwo: new Date(),
+            }}
+        >
+            {children}
+        </Context.Provider>
+    );
+};
 
 export default Context;
 
