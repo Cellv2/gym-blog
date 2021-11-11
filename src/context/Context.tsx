@@ -35,9 +35,9 @@ const Provider = ({ children }: Props) => {
     const [dayTwo, setDayTwo] = useState<Date>(MAX_DATE);
 
     useEffect(() => {
-        // FIXME: correct the typings for this
-        //@ts-expect-error
-        const lsDark: boolean = JSON.parse(localStorage.getItem("dark"));
+        const lsDark: boolean = JSON.parse(
+            localStorage.getItem("dark") || "{}"
+        );
         if (lsDark) {
             setDark(lsDark);
         } else if (supportsDarkMode()) {
